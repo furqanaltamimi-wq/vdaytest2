@@ -1,7 +1,7 @@
 [build]
-  base = "OneDrive/Desktop/newval/val"
+  base = "."
   command = "npm run build"
-  publish = "OneDrive/Desktop/newval/val/www"
+  publish = "www"
 
 [[redirects]]
   from = "/*"
