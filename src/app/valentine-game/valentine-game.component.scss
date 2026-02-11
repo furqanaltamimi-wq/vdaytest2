@@ -1,0 +1,284 @@
+ion-header {
+  box-shadow: 0 2px 8px rgba(220, 20, 60, 0.3);
+}
+
+.valentine-content {
+  --background: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Question Screen Styles */
+.question-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 20px;
+}
+
+.question-box {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 40px rgba(220, 20, 60, 0.2);
+  text-align: center;
+  max-width: 400px;
+  animation: slideIn 0.6s ease-out;
+}
+
+.main-question {
+  font-size: 32px;
+  font-weight: 600;
+  color: #dc143c;
+  margin: 0 0 40px 0;
+  letter-spacing: 0.5px;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: none;
+  padding: 14px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-yes {
+  background: linear-gradient(135deg, #dc143c, #ff1744);
+  color: white;
+  transform-origin: center;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.btn-no {
+  background: linear-gradient(135deg, #999999, #cccccc);
+  color: white;
+  transition: opacity 0.3s ease, background 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, #777777, #aaaaaa);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Success Screen Styles */
+.success-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.flowers-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.flower {
+  position: absolute;
+  font-size: 40px;
+  animation: fall linear forwards;
+  animation-delay: var(--delay);
+  animation-duration: var(--duration);
+  filter: drop-shadow(0 2px 4px rgba(220, 20, 60, 0.2));
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: sway 2s ease-in-out infinite;
+  }
+}
+
+.success-message {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 50px 40px;
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(220, 20, 60, 0.3);
+  max-width: 450px;
+  backdrop-filter: blur(10px);
+  animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.love-heart {
+  font-size: 60px;
+  animation: pulse 1.5s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+.valentine-photo {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 4px solid #dc143c;
+  margin-bottom: 20px;
+  animation: zoomIn 0.6s ease-out;
+  box-shadow: 0 8px 20px rgba(220, 20, 60, 0.3);
+}
+
+.love-text {
+  font-size: 48px;
+  font-weight: 700;
+  color: #dc143c;
+  margin: 0 0 15px 0;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.heart-text {
+  font-size: 18px;
+  color: #666;
+  margin: 0 0 30px 0;
+  font-weight: 500;
+}
+
+.btn-ask-again {
+  background: linear-gradient(135deg, #ff1744, #dc143c);
+  color: white;
+  padding: 16px 40px;
+  font-size: 16px;
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.4);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotateZ(-5deg);
+  }
+  50% {
+    transform: scale(1.05) rotateZ(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateZ(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotateZ(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(var(--sway));
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .question-box {
+    padding: 30px 20px;
+  }
+
+  .main-question {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+
+  .buttons-container {
+    gap: 15px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  .success-message {
+    padding: 35px 25px;
+    margin: 20px;
+  }
+
+  .love-text {
+    font-size: 36px;
+  }
+
+  .heart-text {
+    font-size: 16px;
+  }
+
+  .valentine-photo {
+    width: 220px;
+    height: 220px;
+  }
+
+  .flower {
+    font-size: 32px;
+  }
+}

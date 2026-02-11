@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Will You Be My Valentine? ❤️</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="valentine-content">
+  <!-- Question Screen -->
+  <div class="question-container" *ngIf="showQuestion">
+    <div class="question-box">
+      <h1 class="main-question">Will you be my Valentine? 💕</h1>
+      
+      <div class="buttons-container">
+        <button 
+          class="btn btn-yes"
+          [style.transform]="'scale(' + yesButtonSize + ')'"
+          (click)="onYesClick()">
+          YES ❤️
+        </button>
+        
+        <button 
+          class="btn btn-no"
+          [style.opacity]="noButtonOpacity"
+          [style.pointerEvents]="noButtonOpacity < 0.1 ? 'none' : 'auto'"
+          (click)="onNoClick()">
+          NO
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Screen with Falling Flowers -->
+  <div class="success-container" *ngIf="showSuccess">
+    <!-- Falling flowers -->
+    <div class="flowers-container">
+      <div 
+        *ngFor="let flower of flowers"
+        class="flower"
+        [style.left.%]="flower.left"
+        [style.--delay]="flower.delay + 's'"
+        [style.--duration]="flower.duration + 's'"
+        [style.--sway]="flower.swayAmount + 'px'">
+        🌹
+      </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message">
+      <div class="love-heart">💕</div>
+      <img [src]="imageUrl" alt="Valentine Photo" class="valentine-photo">
+      <h1 class="love-text">I LOVE YOU!</h1>
+      <p class="heart-text">❤️ You made me the happiest! ❤️</p>
+      
+      <!-- <button class="btn btn-ask-again" (click)="askAgain()">
+        Ask Again 💕
+      </button> -->
+    </div>
+  </div>
+</ion-content>
